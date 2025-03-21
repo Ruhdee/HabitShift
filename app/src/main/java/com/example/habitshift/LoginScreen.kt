@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,10 +20,15 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.habitshift.ui.theme.Black
@@ -40,11 +46,12 @@ fun LoginScreenPreview() {
 
 @Composable
 fun LoginScreen() {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .background(color = MaterialTheme.colorScheme.primary)
-            .fillMaxWidth()
-            .fillMaxHeight()
+            .fillMaxSize()
             .padding(vertical = 10.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -67,8 +74,8 @@ fun LoginScreen() {
 
         // Email TextField
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = email,
+            onValueChange = { email = it },
             placeholder = {
                 Text(
                     text = "Email",
@@ -85,14 +92,15 @@ fun LoginScreen() {
             shape = RoundedCornerShape(size = 12.dp),
             modifier = Modifier
                 .width(320.dp)
-                .height(70.dp)
-                .padding(vertical = 10.dp)
+                .height(74.dp)
+                .padding(vertical = 10.dp),
+            textStyle = MaterialTheme.typography.labelMedium
         )
 
         // Password TextField
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = password,
+            onValueChange = { password = it },
             placeholder = {
                 Text(
                     text = "Password",
@@ -100,6 +108,7 @@ fun LoginScreen() {
                     color = MaterialTheme.colorScheme.primary
                 )
             },
+            visualTransformation = PasswordVisualTransformation(),
             colors = OutlinedTextFieldDefaults.colors(
                 unfocusedContainerColor = White,
                 focusedContainerColor = White,
@@ -109,8 +118,9 @@ fun LoginScreen() {
             shape = RoundedCornerShape(size = 12.dp),
             modifier = Modifier
                 .width(320.dp)
-                .height(70.dp)
-                .padding(vertical = 10.dp)
+                .height(74.dp)
+                .padding(vertical = 10.dp),
+            textStyle = MaterialTheme.typography.labelMedium,
         )
 
         // Register Button
@@ -129,7 +139,6 @@ fun LoginScreen() {
                 color = Color.White,
             )
         }
-
 
 
         // Continue with Google Button

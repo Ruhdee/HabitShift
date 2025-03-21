@@ -17,4 +17,5 @@ val OffWhite=Color(0xFFF7F5FF)
 val LightBlue=Color(0xFF7CC4DD)
 val White=Color(0xFFFFFFFF)
 val Black=Color(0xFF000000)
+val Blue =Color(0xFF6C63FF)
 
