@@ -119,7 +119,7 @@ fun LoginScreen() {
             modifier = Modifier
                 .width(320.dp)
                 .height(74.dp)
-                .padding(vertical = 10.dp),
+                .padding(top = 10.dp, bottom = 50.dp),
             textStyle = MaterialTheme.typography.labelMedium,
         )
 
