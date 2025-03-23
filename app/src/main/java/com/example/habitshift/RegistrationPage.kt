@@ -2,7 +2,6 @@ package com.example.habitshift
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -40,6 +39,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,11 +48,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.habitshift.ui.theme.Black
 import com.example.habitshift.ui.theme.Blue
 import com.example.habitshift.ui.theme.HabitShiftTheme
 import com.example.habitshift.ui.theme.White
-import java.nio.file.WatchEvent
 
 @Preview(showBackground = true)
 @Composable
@@ -65,16 +63,16 @@ fun RegistrationPagePreview() {
 @Composable
 fun RegistrationPage() {
     val scrollState = rememberScrollState()
-    var selectedOption by remember { mutableIntStateOf(-1) }
-    var name by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var selectedOption by rememberSaveable { mutableIntStateOf(-1) }
+    var name by rememberSaveable { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
 
     // State to track the selected age and the visibility of the dropdown menu
-    var selectedAge by remember { mutableStateOf("") }
-    var expanded by remember { mutableStateOf(false) }
+    var selectedAge by rememberSaveable { mutableStateOf("") }
+    var expanded by rememberSaveable { mutableStateOf(false) }
 
-    var isChecked by remember { mutableStateOf(false) }
+    var isChecked by rememberSaveable { mutableStateOf(false) }
 
     // List of ages to be displayed in the dropdown
     val ages = (13..100).toList().map { it.toString() }
@@ -89,32 +87,30 @@ fun RegistrationPage() {
     ) {
         TopAppBar(
             title = {
-                Box(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = "Register Now!",
-                        style = MaterialTheme.typography.bodyLarge,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .align(Alignment.Center) // Center the text within the Box
-                            .padding(end = 56.dp) // Add padding to account for the navigation icon
-                    )
-                }
-            },
-            navigationIcon = {
-                IconButton(onClick = { /* Handle the back button click */ }) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-                }
-            },
-            colors = TopAppBarDefaults.mediumTopAppBarColors(
-                containerColor = MaterialTheme.colorScheme.background
-            )
+            Box(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "Register Now!",
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .align(Alignment.Center) // Center the text within the Box
+                        .padding(end = 56.dp) // Add padding to account for the navigation icon
+                )
+            }
+        }, navigationIcon = {
+            IconButton(onClick = { /* Handle the back button click */ }) {
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+            }
+        }, colors = TopAppBarDefaults.mediumTopAppBarColors(
+            containerColor = MaterialTheme.colorScheme.background
+        )
         )
         Image(
             painter = painterResource(R.drawable.signup),
             contentDescription = "Signup image",
-            modifier = Modifier.size(300.dp)
+            modifier = Modifier.width(320.dp)
         )
         OutlinedTextField(
             value = name,
@@ -297,12 +293,14 @@ fun RegistrationPage() {
                 color = Blue,
                 modifier = Modifier.clickable { })
         }
-        Row(modifier = Modifier.width(320.dp), horizontalArrangement = Arrangement.Start){Button(
-            onClick = { },
-            enabled = isChecked,
-            shape = RoundedCornerShape(size = 12.dp),
-            colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary),
-        ) { Text("Register", style = MaterialTheme.typography.labelMedium) }}
+        Row(modifier = Modifier.width(320.dp), horizontalArrangement = Arrangement.Start) {
+            Button(
+                onClick = { },
+                enabled = isChecked,
+                shape = RoundedCornerShape(size = 12.dp),
+                colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary),
+            ) { Text("Register", style = MaterialTheme.typography.labelMedium) }
+        }
 
     }
 

@@ -1,6 +1,7 @@
 package com.example.habitshift.ui.theme
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
@@ -19,3 +20,4 @@ val White=Color(0xFFFFFFFF)
 val Black=Color(0xFF000000)
 val Blue =Color(0xFF6C63FF)
 
+val Shadow=Color(0x40000000)

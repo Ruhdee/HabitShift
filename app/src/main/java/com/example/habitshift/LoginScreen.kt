@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,13 +47,13 @@ fun LoginScreenPreview() {
 
 @Composable
 fun LoginScreen() {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
     Column(
         modifier = Modifier
             .background(color = MaterialTheme.colorScheme.primary)
             .fillMaxSize()
-            .padding(vertical = 10.dp),
+            .padding(top = 10.dp, bottom = 50.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -60,7 +61,7 @@ fun LoginScreen() {
         Image(
             painter = painterResource(id = R.drawable.login),
             contentDescription = "Login image",
-            modifier = Modifier.size(350.dp)
+            modifier = Modifier.width(320.dp)
         )
 
         // Title Text
@@ -119,7 +120,7 @@ fun LoginScreen() {
             modifier = Modifier
                 .width(320.dp)
                 .height(74.dp)
-                .padding(top = 10.dp, bottom = 50.dp),
+                .padding(vertical = 10.dp),
             textStyle = MaterialTheme.typography.labelMedium,
         )
 
