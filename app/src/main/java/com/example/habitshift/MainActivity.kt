@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.habitshift.ui.theme.HabitShiftTheme
+import com.example.habitshift.ui.theme.SuggestionsPage
 
 
 class MainActivity : ComponentActivity() {
@@ -12,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            HabitShiftTheme{ PreferencesPage()}
+            HabitShiftTheme{ SuggestionsPage()}
 
         }
     }
