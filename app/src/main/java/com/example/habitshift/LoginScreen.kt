@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -34,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.habitshift.ui.theme.Black
 import com.example.habitshift.ui.theme.HabitShiftTheme
+import com.example.habitshift.ui.theme.OffWhite
 import com.example.habitshift.ui.theme.White
 
 
@@ -131,13 +130,28 @@ fun LoginScreen() {
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.tertiary),
             modifier = Modifier
                 .width(360.dp)
-                .height(109.dp)
-                .padding(top = 45.dp, bottom = 10.dp)
+                .height(99.dp)
+                .padding(top = 35.dp, bottom = 5.dp)
+        ) {
+            Text(
+                text = "Login",
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color.White,
+            )
+        }
+        Button(
+            onClick = {},
+            shape = RoundedCornerShape(size = 36.dp),
+            colors = ButtonDefaults.buttonColors(OffWhite),
+            modifier = Modifier
+                .width(360.dp)
+                .height(74.dp)
+                .padding(bottom = 5.dp, top = 15.dp)
         ) {
             Text(
                 text = "Register",
                 style = MaterialTheme.typography.bodyLarge,
-                color = Color.White,
+                color = Color.Black,
             )
         }
 
@@ -146,11 +160,11 @@ fun LoginScreen() {
         Button(
             onClick = {},
             shape = RoundedCornerShape(size = 36.dp),
-            colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.secondary),
+            colors = ButtonDefaults.buttonColors(OffWhite),
             modifier = Modifier
                 .width(360.dp)
-                .height(74.dp)
-                .padding(vertical = 10.dp)
+                .height(64.dp)
+                .padding(vertical = 5.dp)
         ) {
             Row(
                 modifier = Modifier
