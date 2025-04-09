@@ -35,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.habitshift.ui.theme.Black
 import com.example.habitshift.ui.theme.HabitShiftTheme
+import com.example.habitshift.ui.theme.Purple
 import com.example.habitshift.ui.theme.White
 
 @Preview(showBackground = true)
@@ -128,11 +129,13 @@ fun HabitButton(
         }, modifier = Modifier
             .width(320.dp)
             .height(80.dp)
-            .padding(vertical = 10.dp).border(width = 1.dp, color = Black, shape = RoundedCornerShape(size = 12.dp))
+            .padding(vertical = 10.dp)
             .graphicsLayer(
                 shadowElevation = if (!isChecked) 15.0f else 0f,
                 shape = RoundedCornerShape(size = 12.dp),
-                clip = true
+                clip = true,
+                ambientShadowColor = Purple,
+                spotShadowColor = Purple
             ), shape = RoundedCornerShape(size = 12.dp)
 
     ) {

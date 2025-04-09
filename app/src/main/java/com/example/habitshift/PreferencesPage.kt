@@ -3,7 +3,6 @@ package com.example.habitshift
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -81,7 +80,10 @@ fun PreferencesPage() {
         val listOfAppButtonBuilders = getAppButtonList()
         for (builder in listOfAppButtonBuilders) {
             AppButton(
-                builder.painter, builder.description, builder.name, toggleList = fun(string: String) {
+                builder.painter,
+                builder.description,
+                builder.name,
+                toggleList = fun(string: String) {
                     synchronized(Any()) {
                         if (selectedApps.contains(string)) {
                             selectedApps.remove(string)
@@ -155,10 +157,10 @@ fun AppButton(
         }, modifier = Modifier
             .width(320.dp)
             .height(80.dp)
-            .padding(vertical = 10.dp).border(width = 1.dp, color = Black, shape = CircleShape)
+            .padding(vertical = 10.dp)
             .graphicsLayer(
-                shadowElevation = if (!isChecked) 15.0f else 0f, shape = CircleShape, clip = true
-            )
+                shadowElevation = if (!isChecked) 15.0f else 0f, shape = RoundedCornerShape(size = 12.dp), clip = true
+            ), shape = RoundedCornerShape(size = 12.dp)
 
     ) {
         Row(
